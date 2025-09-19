@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth" data-theme="corporate-navy">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO & Metadata -->
+    <title>Consultoría de Transformación Digital | Aceleramos su Negocio con Resultados Medibles</title>
+    <meta name="description" content="Ayudamos a líderes de la industria a optimizar operaciones, tecnología y estrategia. Descubra cómo podemos acelerar su negocio con nuestras soluciones de transformación digital." />
+
+    <!-- OpenGraph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tu-dominio.com/">
+    <meta property="og:title" content="Consultoría de Transformación Digital | Aceleramos su Negocio">
+    <meta property="og:description" content="Ayudamos a líderes de la industria a optimizar operaciones, tecnología y estrategia.">
+    <meta property="og:image" content="https://picsum.photos/id/431/1200/630">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://tu-dominio.com/">
+    <meta property="twitter:title" content="Consultoría de Transformación Digital | Aceleramos su Negocio">
+    <meta property="twitter:description" content="Ayudamos a líderes de la industria a optimizar operaciones, tecnología y estrategia.">
+    <meta property="twitter:image" content="https://picsum.photos/id/431/1200/630">
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://www.youtube.com">
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://picsum.photos">
+
+    <!-- Anti-Flicker Theme Loader Script -->
+    <script>
+      // Prevents FOUC by setting theme from localStorage or system preference
+      const theme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (theme === 'dark' || (!theme && prefersDark)) {
+          document.documentElement.dataset.mode = 'dark';
+      } else {
+          document.documentElement.dataset.mode = 'light';
+      }
+    </script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', '"Helvetica Neue"', 'Arial', '"Noto Sans"', 'sans-serif', '"Apple Color Emoji"', '"Segoe UI Emoji"', '"Segoe UI Symbol"', '"Noto Color Emoji"'],
+                    },
+                    colors: {
+                        'brand-bg': 'var(--bg)',
+                        'brand-bg-secondary': 'var(--bg-elev)', // Mapped to elevated surfaces
+                        'brand-primary': 'var(--primary)',
+                        'brand-primary-darker': 'var(--primary-weak)', // Mapped for gradients
+                        'brand-secondary': 'var(--primary-weak)', // Mapped for accents & gradients
+                        'brand-text': 'var(--text)',
+                        'brand-text-secondary': 'var(--text-weak)', // Mapped to weak text color
+                        'brand-border': 'var(--border)',
+                        'brand-link': 'var(--link)',
+                        'muted': 'var(--muted)',
+                    },
+                    boxShadow: {
+                        'glow-primary': 'var(--shadow-glow)',
+                        '1': 'var(--shadow-1)',
+                        '2': 'var(--shadow-2)',
+                    },
+                    borderRadius: {
+                        'lg': 'var(--radius-lg)',
+                        'md': 'var(--radius-md)',
+                        'sm': 'var(--radius-sm)',
+                    }
+                },
+            },
+        };
+    </script>
+    
+    <!-- Custom Styles & Animations -->
+    <style>
+        /* ====== TOKENS BASE ====== */
+        :root {
+          --radius-lg: 18px;
+          --radius-md: 12px;
+          --radius-sm: 8px;
+
+          --shadow-1: 0 6px 24px rgba(0,0,0,.06);
+          --shadow-2: 0 12px 40px rgba(0,0,0,.08);
+
+          /* Motion: suave, natural */
+          --ease-apple: cubic-bezier(0.4, 0, 0.2, 1);
+          --dur-quick: 250ms;
+          --dur-base: 400ms;
+        }
+
+        /* ====== LIGHT (Corporate Navy) ====== */
+        :root[data-theme="corporate-navy"][data-mode="light"]{
+          /* Neutros Corporativos */
+          --bg: #FBFBFD;
+          --bg-elev: #FFFFFF;
+          --text: #0A2540; /* Updated from black to navy for brand consistency */
+          --text-weak: #6E6E73;
+          --muted: #F5F5F7;
+          --hairline: #E5E5EA;
+          --border: #D2D2D7;
+
+          /* Acentos en azul marino corporativo */
+          --primary: #0A2540;
+          --primary-weak: #0D3358;
+          --link: #0A2540;
+
+          /* Estados sutiles */
+          --success: #1FB66D;
+          --warn: #F59E0B;
+          --danger: #E53935;
+          --shadow-glow: 0 0 24px rgba(10, 37, 64, 0.3);
+        }
+
+        /* ====== DARK (Corporate Navy) ====== */
+        :root[data-theme="corporate-navy"][data-mode="dark"]{
+          --bg: #000000;
+          --bg-elev: #0B0B0F;
+          --text: #F5F5F7;
+          --text-weak: #A1A1A6;
+          --muted: #0F1115;
+          --hairline: #1C1C1E;
+          --border: #2C2C2E;
+
+          /* Acentos en azul brillante para contraste en modo oscuro */
+          --primary: #6385FF;
+          --primary-weak: #7C9CFF;
+          --link: #6385FF;
+
+          --success: #2AD38A;
+          --warn: #F5B94C;
+          --danger: #FF5A5F;
+          --shadow-glow: 0 0 24px rgba(99, 133, 255, 0.3);
+        }
+        
+        /* ====== APLICACIÓN GLOBAL ====== */
+        html, body { background: var(--bg); color: var(--text); }
+        a { color: var(--link); text-underline-offset: 2px; }
+        .hr { height:1px; background: var(--hairline); border:0; }
+
+        /* ====== NAVIGATION ====== */
+        .nav-link.active {
+          color: var(--primary);
+          font-weight: 600;
+        }
+
+        /* ====== BUTTON SYSTEM ====== */
+        .button{
+          display:inline-flex; align-items:center; justify-content:center;
+          gap:10px; padding:12px 18px; border-radius: var(--radius-md);
+          background: var(--primary); color: #fff; border: 1px solid transparent;
+          transition: background var(--dur-base) var(--ease-apple), transform var(--dur-quick) var(--ease-apple), box-shadow var(--dur-base) var(--ease-apple);
+          font-weight: 600; letter-spacing: .01em;
+          text-decoration: none; /* remove underline from links styled as buttons */
+        }
+        .button:hover{ background: var(--primary-weak); transform: translateY(-1px); color: #fff; box-shadow: var(--shadow-glow); }
+        .button:active{ transform: translateY(0); }
+        .button-ghost{
+          background: transparent; color: var(--text); border: 1px solid var(--border);
+        }
+        .button-ghost:hover{ background: var(--muted); color: var(--text); box-shadow: none; }
+
+        /* ====== CARD SYSTEM ====== */
+        .card{
+          background: var(--bg-elev);
+          border: 1px solid var(--hairline);
+          border-radius: var(--radius-lg);
+          box-shadow: var(--shadow-1);
+          padding: 20px;
+          transition: transform var(--dur-base) var(--ease-apple), box-shadow var(--dur-base) var(--ease-apple);
+        }
+        .card:hover{ transform: translateY(-2px); box-shadow: var(--shadow-2); }
+        
+        /* ====== BENEFIT CARD SYSTEM (HIGH IMPACT) ====== */
+        .benefit-card {
+            background: var(--bg-elev);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: transform var(--dur-base) var(--ease-apple), box-shadow var(--dur-base) var(--ease-apple), border-color var(--dur-base) var(--ease-apple);
+        }
+
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% -20%, hsla(215, 71%, 35%, 0.1), transparent 40%);
+            opacity: 0;
+            transition: opacity var(--dur-base) var(--ease-apple);
+            pointer-events: none;
+        }
+
+        .benefit-card:hover::before {
+            opacity: 1;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-2);
+            border-color: var(--primary);
+        }
+
+        .benefit-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 64px;
+            height: 64px;
+            border-radius: var(--radius-md);
+            background: var(--muted);
+            border: 1px solid var(--border);
+            margin-bottom: 16px;
+            transition: background var(--dur-base) var(--ease-apple), box-shadow var(--dur-base) var(--ease-apple), color var(--dur-base) var(--ease-apple);
+        }
+        
+        .benefit-icon svg {
+          width: 32px;
+          height: 32px;
+          color: var(--primary);
+          transition: transform var(--dur-base) var(--ease-apple);
+        }
+
+        .benefit-card:hover .benefit-icon {
+          background: var(--primary);
+          box-shadow: var(--shadow-glow);
+        }
+        .benefit-card:hover .benefit-icon svg {
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        /* ====== VIDEO TILE SYSTEM ====== */
+        .video-tile{
+          position:relative; 
+          overflow:hidden; 
+          border-radius: var(--radius-lg);
+          background: var(--bg-elev);
+          cursor: pointer;
+          border: 1px solid var(--hairline); /* Fallback border */
+          transition: transform var(--dur-base) var(--ease-apple), box-shadow var(--dur-base) var(--ease-apple);
+          z-index: 1;
+        }
+
+        /* This ::before will be the animated gradient border */
+        .video-tile::before {
+            content: '';
+            position: absolute;
+            inset: -3px; /* Controls border thickness */
+            border-radius: inherit;
+            background: conic-gradient(from var(--angle), var(--primary), var(--brand-secondary) 45%, var(--primary-weak) 49%, white 50%, var(--primary-weak) 51%, var(--brand-secondary) 55%, var(--primary));
+            opacity: 0;
+            transition: opacity var(--dur-base) var(--ease-apple);
+            animation: spin 6s linear infinite;
+            z-index: -2; /* Place behind content and default border */
+        }
+
+        @property --angle {
+          syntax: '<angle>';
+          initial-value: 0deg;
+          inherits: false;
+        }
+
+        @keyframes spin {
+          to {
+            --angle: 360deg;
+          }
+        }
+
+        .video-tile:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-2);
+        }
+
+        .video-tile:hover::before {
+            opacity: 1;
+        }
+
+        .video-tile-image-wrapper {
+            position: relative;
+            overflow: hidden;
+            /* Match card's top rounding */
+            border-top-left-radius: var(--radius-lg);
+            border-top-right-radius: var(--radius-lg);
+        }
+
+        .video-tile-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(to top, rgba(10, 37, 64, 0.6), transparent 70%); /* Subtle gradient using brand color */
+            opacity: 0;
+            transition: opacity var(--dur-base) var(--ease-apple);
+            pointer-events: none;
+        }
+
+        .video-tile:hover .video-tile-overlay {
+            opacity: 1;
+        }
+
+        .play-icon {
+            position: relative;
+            width: 72px;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            transform: scale(0.8);
+            transition: transform var(--dur-base) var(--ease-apple);
+        }
+
+        .play-icon::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            animation: pulse-wave 2.5s infinite ease-out;
+            opacity: 0;
+            z-index: -1;
+        }
+        
+        @keyframes pulse-wave {
+            0% {
+                transform: scale(0.95);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.9;
+            }
+            100% {
+                transform: scale(1.4);
+                opacity: 0;
+            }
+        }
+
+        .video-tile:hover .play-icon {
+            transform: scale(1);
+        }
+        
+        .play-icon svg {
+            transition: transform 0.2s ease-out;
+        }
+
+        .video-tile:hover .play-icon svg {
+            transform: scale(1.05);
+        }
+
+        .video-tile img { 
+            width:100%; height:auto; display:block; 
+            transition: transform var(--dur-base) var(--ease-apple);
+        }
+        .video-tile:hover img {
+            transform: scale(1.05);
+        }
+
+        .video-tile .meta{ padding:16px 18px; }
+        .video-tile .title{ font-weight:700; margin-bottom:6px; font-size: 1.125rem; }
+        .video-tile .desc{ color: var(--text-weak); }
+        
+        /* ====== MODAL SYSTEM ====== */
+        .modal-backdrop{
+          position:fixed; inset:0; background: rgba(0,0,0,.5);
+          backdrop-filter: blur(4px);
+          z-index: 49;
+          opacity:0; pointer-events:none;
+          transition: opacity var(--dur-base) var(--ease-apple);
+          cursor: pointer;
+        }
+        .modal{
+          position:fixed; inset: 8% 6%; background: var(--bg-elev);
+          border:1px solid var(--hairline); border-radius: var(--radius-lg);
+          z-index: 50;
+          transform: scale(.98); opacity: 0; pointer-events: none;
+          visibility: hidden;
+          transition: transform var(--dur-base) var(--ease-apple), opacity var(--dur-base) var(--ease-apple), visibility var(--dur-base) var(--ease-apple);
+        }
+        .modal[open]{
+          transform: scale(1); opacity:1; pointer-events: auto; visibility: visible;
+        }
+        .modal[open] ~ .modal-backdrop{
+          opacity:1; pointer-events:auto;
+        }
+
+        /* ===== GX Executive Ticker ===== */
+        #gx-ticker{
+          --gx-height: 44px;
+          --gx-gap: 28px;
+          --gx-speed: 55s; /* ↑ mayor = más lento */
+          --gx-bg: #FFFFFF;
+          --gx-bg-dark: rgba(20,24,32,.6);
+          color: currentColor; position: relative;
+        }
+        #gx-ticker .gx-ticker__mask{
+          height: var(--gx-height);
+          overflow: hidden;
+          background: var(--gx-bg);
+          backdrop-filter: saturate(1.1) blur(3px);
+          display: flex;
+          align-items: center;
+        }
+        /* Fades laterales (sin costosos mask-image) */
+        #gx-ticker::before, #gx-ticker::after{
+          content:""; position:absolute; top:0; bottom:0; width:8%; pointer-events:none; z-index:1;
+          background: linear-gradient(to right, var(--gx-bg), transparent);
+        }
+        #gx-ticker::before{ left:0; }
+        #gx-ticker::after{ right:0; transform: scaleX(-1); }
+
+        /* Pista que contiene DOS secuencias idénticas */
+        #gx-ticker .gx-ticker__track{
+          display: flex;
+          gap: 0; /* sin huecos extra entre A y B */
+          width: max-content;            /* se ajusta al contenido real */
+          will-change: transform;
+          animation: gx-scroll-ltr var(--gx-speed) linear infinite;
+        }
+
+        /* Cada secuencia es un flex horizontal con gap uniforme */
+        #gx-ticker .gx-ticker__seq{
+          list-style: none; margin: 0; padding: 0;
+          display: flex; align-items: center; gap: var(--gx-gap);
+        }
+        #gx-ticker .gx-ticker__item{
+          display: inline-flex; align-items: center; gap: 10px;
+          white-space: nowrap; font-weight: 300; font-size: 11px; opacity: .92;
+          color: #0A2540;
+        }
+        #gx-ticker .ico{ width: 18px; height: 18px; flex: 0 0 18px; color: #0A2540; }
+
+        /* Pausa al hover/focus SIN JS */
+        #gx-ticker:hover .gx-ticker__track,
+        #gx-ticker:focus-within .gx-ticker__track{ animation-play-state: paused; }
+
+        /* Animación continua de derecha a izquierda (el contenido se mueve hacia la izquierda) */
+        @keyframes gx-scroll-ltr {
+          from { transform: translateX(0%); }
+          to   { transform: translateX(-50%); }
+        }
+
+        /* Responsive & Motion */
+        @media (max-width:768px){
+          #gx-ticker{ --gx-height: 40px; --gx-gap: 22px; --gx-speed: 34s; }
+          #gx-ticker .gx-ticker__item{ font-size: 10.5px; }
+        }
+        @media (prefers-reduced-motion: reduce){
+          #gx-ticker .gx-ticker__track{ animation: none !important; }
+        }
+
+        /* Dark (opcional si tienes modo oscuro) */
+        html[data-mode="dark"] #gx-ticker .gx-ticker__mask{
+          background: var(--gx-bg-dark);
+        }
+        html[data-mode="dark"] #gx-ticker::before,
+        html[data-mode="dark"] #gx-ticker::after{
+          background: linear-gradient(to right, var(--gx-bg-dark), rgba(0,0,0,0));
+        }
+
+        /* ====== PRELOADER ====== */
+        .preloader {
+            position: fixed;
+            inset: 0;
+            background-color: var(--bg);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.8s var(--ease-apple), visibility 0.8s var(--ease-apple);
+        }
+        .preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        .preloader-content {
+            text-align: center;
+            animation: pulse-text 2s infinite var(--ease-apple);
+        }
+        @keyframes pulse-text {
+            0%, 100% { opacity: 0.8; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.02); }
+        }
+        
+        /* ====== TYPEWRITER EFFECT (ENHANCED & MINIMALIST) ====== */
+        /* This container creates the dark, styled box */
+        .typewriter-container {
+            display: inline-block; /* Crucial to size with the inner content */
+            background-color: #1C1C1C; /* Dark gray background */
+            border-radius: 6px; /* Softly rounded corners */
+            padding: 8px 24px; /* Thinner, elegant padding */
+            box-shadow: 0 6px 24px rgba(0,0,0,.15); /* Subtle shadow for depth */
+            cursor: default; /* Interactive feel */
+            transition: box-shadow var(--dur-base) var(--ease-apple);
+        }
+        
+        .typewriter-container:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,.2);
+        }
+
+        /* The text element itself, now with specific styling for inside the box */
+        .typewriter-text {
+            color: #FFFFFF; /* White text */
+            font-size: 1.25rem; /* text-xl equivalent */
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            line-height: 1.5;
+            /* Default direction is LTR, so no 'direction' property needed */
+        }
+
+        /* The span is the core of the animation, it gets its width animated */
+        .typewriter-text span {
+            display: inline-block; /* Needed for width animation to work */
+            overflow: hidden; /* Hides the text outside of the current width */
+            white-space: nowrap; /* Prevents the text from wrapping */
+            vertical-align: bottom;
+            
+            /* The caret is on the RIGHT for LTR typing */
+            border-right: .1em solid #FFFFFF;
+            
+            /* Animation for typing/erasing width + caret blinking */
+            animation: 
+                typing-ltr 8s steps(72) infinite, 
+                blink-caret-ltr .75s step-end infinite;
+        }
+
+        /* Pause the animation on hover of the container */
+        .typewriter-container:hover .typewriter-text span {
+            animation-play-state: paused;
+        }
+
+        /* Keyframes to animate the width from 0 to 100% and back (LTR) */
+        @keyframes typing-ltr {
+            0%, 100% {
+                width: 0;
+            }
+            50%, 75% {
+                /* Hold the full text for 25% of the duration */
+                width: 100%;
+            }
+        }
+
+        /* Keyframes for the caret blinking on the right side */
+        @keyframes blink-caret-ltr {
+            from, to { border-right-color: transparent; }
+            50% { border-right-color: #FFFFFF; }
+        }
+
+        /* ====== GENERAL ANIMATIONS & UTILITIES ====== */
+        .fade-in-section {
+          opacity: 0;
+        }
+        .fade-in-section.is-visible {
+          opacity: 1;
+          transition: opacity 1.2s ease-out;
+        }
+        .fade-in-section.is-visible > * {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+
+        /* Staggered animation for children */
+        .stagger-children.is-visible > :nth-child(1) { animation-delay: 0.2s; }
+        .stagger-children.is-visible > :nth-child(2) { animation-delay: 0.4s; }
+        .stagger-children.is-visible > :nth-child(3) { animation-delay: 0.6s; }
+        .stagger-children.is-visible > :nth-child(4) { animation-delay: 0.8s; }
+        .stagger-children.is-visible > :nth-child(5) { animation-delay: 1.0s; }
+        .stagger-children.is-visible > :nth-child(6) { animation-delay: 1.2s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes zoomInUp {
+            from {
+                opacity: 0;
+                transform: scale(0.9) translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+        
+        #video-grid.stagger-children.is-visible > .video-tile,
+        #beneficios .stagger-children.is-visible > .benefit-card {
+            animation-name: zoomInUp;
+            animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            animation-duration: 1.2s;
+        }
+        
+        /* AI Content Loader */
+        .ai-content-loading {
+            filter: blur(5px);
+            transition: filter 0.5s ease-out;
+        }
+
+        /* Pulsing CTA Button */
+        .pulsing-cta {
+            animation: pulse-glow 2.5s infinite var(--ease-apple);
+        }
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 0 0 rgba(255,255,255, 0.4); }
+            70% { box-shadow: 0 0 0 12px rgba(255,255,255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255,255,255, 0); }
+        }
+
+        details > summary {
+            list-style: none;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        details .content {
+            overflow: hidden;
+            transition: max-height 0.5s var(--ease-apple), opacity 0.5s var(--ease-apple);
+            max-height: 0;
+            opacity: 0;
+        }
+        details[open] .content {
+            max-height: 500px; /* Adjust as needed */
+            opacity: 1;
+        }
+        
+        /* ====== GLOW BORDER CARD ====== */
+        .glow-border-card {
+            position: relative;
+            background: var(--muted); /* The actual background */
+            z-index: 1;
+            border-radius: var(--radius-lg);
+            transition: transform var(--dur-base) var(--ease-apple);
+        }
+        
+        .glow-border-card::before {
+            content: '';
+            position: absolute;
+            inset: -1px; /* Controls border thickness */
+            border-radius: inherit; /* Inherits the parent's border-radius */
+            background: linear-gradient(145deg, var(--border), transparent 30%, transparent 70%, var(--border));
+            transition: background var(--dur-base) var(--ease-apple);
+            z-index: -1;
+        }
+
+        .glow-border-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .glow-border-card:hover::before {
+            background: linear-gradient(145deg, var(--primary), var(--brand-secondary));
+        }
+    </style>
+    
+    <!-- Gemini API -->
+    <script type="importmap">
+      {
+        "imports": {
+          "@google/genai": "https://esm.run/@google/genai"
+        }
+      }
+    </script>
+    
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "InnovateNow Consulting",
+      "url": "https://tu-dominio.com/",
+      "logo": "https://tu-dominio.com/logo.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "contacto@innovatenow.com",
+        "contactType": "Sales"
+      },
+      "description": "Consultoría de transformación digital que ayuda a líderes de la industria a optimizar operaciones, tecnología y estrategia."
+    }
+    </script>
+</head>
+<body class="bg-brand-bg text-brand-text antialiased">
+    <!-- Preloader -->
+    <div id="preloader" class="preloader">
+      <div class="preloader-content">
+        <h2 class="text-2xl font-bold text-brand-primary">InnovateNow Consulting</h2>
+      </div>
+    </div>
+    
+    <header class="sticky top-0 z-40 bg-brand-bg/80 backdrop-blur-lg border-b border-hairline">
+      <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="#" class="text-xl font-bold text-brand-text">InnovateNow Consulting</a>
+        <div class="flex items-center space-x-4">
+          <!-- Desktop Nav -->
+          <nav id="desktop-nav" class="hidden md:flex items-center space-x-6">
+            <a href="#servicios" class="nav-link text-brand-text-secondary hover:text-brand-primary transition-colors duration-200">Servicios</a>
+            <a href="#beneficios" class="nav-link text-brand-text-secondary hover:text-brand-primary transition-colors duration-200">Beneficios</a>
+            <a href="#impacto" class="nav-link text-brand-text-secondary hover:text-brand-primary transition-colors duration-200">Impacto</a>
+            <a href="#contacto" class="nav-link text-brand-text-secondary hover:text-brand-primary transition-colors duration-200">Contacto</a>
+          </nav>
+          <button id="theme-toggle" type="button" class="hidden md:flex items-center justify-center text-brand-text-secondary hover:text-brand-primary transition-colors duration-200 p-2 rounded-full hover:bg-muted" aria-label="Toggle light/dark theme">
+              <svg id="theme-toggle-dark-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+              <svg id="theme-toggle-light-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm-.707 10.607a1 1 0 010-1.414l.707-.707a1 1 0 111.414 1.414l-.707-.707a1 1 0 01-1.414 0zM1 11a1 1 0 100-2H0a1 1 0 100 2h1z"></path></svg>
+          </button>
+           <!-- Mobile Menu Button -->
+          <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-brand-text-secondary hover:text-brand-primary hover:bg-muted focus:outline-none focus:ring-2 focus:ring-inset focus:ring-brand-primary" aria-controls="mobile-menu" aria-expanded="false">
+            <span class="sr-only">Abrir menú principal</span>
+            <svg id="menu-open-icon" class="h-6 w-6 block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg id="menu-close-icon" class="h-6 w-6 hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden md:hidden">
+        <nav class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+          <a href="#servicios" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-brand-text-secondary hover:text-brand-primary hover:bg-muted">Servicios</a>
+          <a href="#beneficios" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-brand-text-secondary hover:text-brand-primary hover:bg-muted">Beneficios</a>
+          <a href="#impacto" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-brand-text-secondary hover:text-brand-primary hover:bg-muted">Impacto</a>
+          <a href="#contacto" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-brand-text-secondary hover:text-brand-primary hover:bg-muted">Contacto</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- ===== Carrusel ejecutivo (nuevo, arriba del hero) ===== -->
+      <section id="gx-ticker" role="region" aria-label="Mensajes ejecutivos sobre transformación digital">
+        <div class="gx-ticker__mask">
+          <div class="gx-ticker__track">
+            <!-- Secuencia A -->
+            <ul class="gx-ticker__seq">
+              <li class="gx-ticker__item"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V6M10 20V10M16 20V4M2 20h20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>Decisiones con datos confiables</span></li>
+              <li class="gx-ticker__item"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>Cierres puntuales, sin sorpresas</span></li>
+              <li class="gx-ticker__item"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 4v5.6c0 4-2.9 7.7-7 8.4-4.1-.7-7-4.4-7-8.4V7l7-4z"/><path d="M9.5 12.5l1.8 1.8 3.7-3.7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Riesgos visibles desde el inicio</span></li>
+              <li class="gx-ticker__item"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2L3 14h7l-1 8 11-12h-7l0-8z" fill="currentColor"/></svg><span>Operación ágil y segura</span></li>
+              <li class="gx-ticker__item"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/></svg><span>Ejecución estratégica en tiempo real</span></li>
+              <li class="gx-ticker__item"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12l4 4 8-8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Procesos claros y auditables</span></li>
+            </ul>
+            <!-- Secuencia B (duplicada, idéntica a A) -->
+            <ul class="gx-ticker__seq" aria-hidden="true">
+              <li class="gx-ticker__item"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V6M10 20V10M16 20V4M2 20h20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>Decisiones con datos confiables</span></li>
+              <li class="gx-ticker__item"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>Cierres puntuales, sin sorpresas</span></li>
+              <li class="gx-ticker__item"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 4v5.6c0 4-2.9 7.7-7 8.4-4.1-.7-7-4.4-7-8.4V7l7-4z"/><path d="M9.5 12.5l1.8 1.8 3.7-3.7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Riesgos visibles desde el inicio</span></li>
+              <li class="gx-ticker__item"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2L3 14h7l-1 8 11-12h-7l0-8z" fill="currentColor"/></svg><span>Operación ágil y segura</span></li>
+              <li class="gx-ticker__item"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/></svg><span>Ejecución estratégica en tiempo real</span></li>
+              <li class="gx-ticker__item"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12l4 4 8-8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Procesos claros y auditables</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Hero Section -->
+      <section id="gx-hero" class="pt-16 md:pt-24 pb-20 md:pb-32">
+        <div class="container mx-auto px-6 text-center">
+          <div class="max-w-4xl mx-auto">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-center tracking-tight leading-tight">
+              <span class="bg-clip-text text-transparent bg-gradient-to-r from-brand-primary to-brand-secondary">
+                La Transformación Digital es Estrategia Corporativa, donde la Tecnología es solo el comienzo
+              </span>
+            </h1>
+            <div class="mt-8 flex justify-center">
+                <div class="typewriter-container">
+                    <p id="ai-subtitle" class="typewriter-text">
+                        <span>Alineamos estrategia, procesos y tecnología para liderar el futuro digital</span>
+                    </p>
+                </div>
+            </div>
+          </div>
+          
+          <div class="max-w-6xl mx-auto text-left grid grid-cols-1 md:grid-cols-3 gap-12 mt-16 fade-in-section stagger-children">
+              <!-- Step 1: The Problem -->
+              <div>
+                  <div class="flex items-baseline">
+                      <span class="text-8xl font-extrabold text-brand-primary leading-none">01</span>
+                      <h3 class="ml-4 text-3xl font-bold text-brand-text">Dilema Actual</h3>
+                  </div>
+                  <div class="mt-6 glow-border-card p-6">
+                      <p class="text-brand-text-secondary text-base">
+                          Hoy, las empresas líderes enfrentan un dilema que frena su crecimiento y agilidad:
+                      </p>
+                      <ul class="mt-4 space-y-3 text-brand-text-secondary text-base">
+                          <li class="flex items-start">
+                              <svg class="flex-shrink-0 h-6 w-6 text-brand-primary mr-3 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" /></svg>
+                              <span><strong class="font-semibold text-brand-primary">Procesos fragmentados</strong> que generan ineficiencia y costos ocultos.</span>
+                          </li>
+                          <li class="flex items-start">
+                              <svg class="flex-shrink-0 h-6 w-6 text-brand-primary mr-3 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" /></svg>
+                              <span><strong class="font-semibold text-brand-primary">Información poco confiable</strong> que lleva a malas decisiones estratégicas.</span>
+                          </li>
+                           <li class="flex items-start">
+                              <svg class="flex-shrink-0 h-6 w-6 text-brand-primary mr-3 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                              <span><strong class="font-semibold text-brand-primary">Decisiones que llegan tarde</strong> en un entorno de alta velocidad competitiva.</span>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+
+              <!-- Step 2: The Vision -->
+              <div>
+                  <div class="flex items-baseline">
+                      <span class="text-8xl font-extrabold text-brand-primary leading-none">02</span>
+                      <h3 class="ml-4 text-3xl font-bold text-brand-text">Visión Integrada</h3>
+                  </div>
+                  <div class="mt-6 glow-border-card p-6">
+                      <p class="text-brand-text-secondary text-base">
+                          Al integrar finanzas, operaciones y talento bajo una visión digital, su organización obtiene:
+                      </p>
+                      <ul class="mt-4 space-y-3 text-brand-text-secondary text-base">
+                          <li class="flex items-start">
+                              <svg class="flex-shrink-0 h-6 w-6 text-brand-primary mr-3 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12" /></svg>
+                              <span><strong class="font-semibold text-brand-primary">Trazabilidad total</strong> para un control absoluto de extremo a extremo.</span>
+                          </li>
+                          <li class="flex items-start">
+                              <svg class="flex-shrink-0 h-6 w-6 text-brand-primary mr-3 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" /></svg>
+                              <span><strong class="font-semibold text-brand-primary">Decisiones basadas en datos</strong> que son 100% confiables y oportunos.</span>
+                          </li>
+                           <li class="flex items-start">
+                              <svg class="flex-shrink-0 h-6 w-6 text-brand-primary mr-3 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.286zm0 13.036h.008v.008h-.008v-.008z" /></svg>
+                              <span><strong class="font-semibold text-brand-primary">Capacidad de anticiparse</strong> a los riesgos operativos y de mercado.</span>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+
+              <!-- Step 3: The Outcome -->
+              <div>
+                  <div class="flex items-baseline">
+                      <span class="text-8xl font-extrabold text-brand-primary leading-none">03</span>
+                      <h3 class="ml-4 text-3xl font-bold text-brand-text">Salto Estratégico</h3>
+                  </div>
+                  <div class="mt-6 glow-border-card p-6">
+                      <p class="text-brand-text-secondary text-base">
+                          Es el momento de pasar del control operativo al <strong class="font-semibold text-brand-primary">gobierno empresarial con visión digital</strong>, logrando:
+                      </p>
+                      <ul class="mt-4 space-y-3 text-brand-text-secondary text-base">
+                          <li class="flex items-start">
+                              <svg class="flex-shrink-0 h-6 w-6 text-brand-primary mr-3 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15.042 21.672L13.684 16.6m0 0l-2.51 2.225.569-9.47 5.227 7.917-3.286-.672zm-7.518-.267A8.25 8.25 0 1120.25 10.5M8.288 14.212A5.25 5.25 0 1117.25 10.5" /></svg>
+                              <span><strong class="font-semibold text-brand-primary">Más foco,</strong> alineando cada acción a la estrategia corporativa.</span>
+                          </li>
+                          <li class="flex items-start">
+                              <svg class="flex-shrink-0 h-6 w-6 text-brand-primary mr-3 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /></svg>
+                              <span><strong class="font-semibold text-brand-primary">Más velocidad</strong> para acelerar la ejecución y la toma de decisiones.</span>
+                          </li>
+                           <li class="flex items-start">
+                              <svg class="flex-shrink-0 h-6 w-6 text-brand-primary mr-3 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-3.75-2.25m3.75 2.25l-4.125 7.5" /></svg>
+                              <span><strong class="font-semibold text-brand-primary">Mayor impacto</strong> directo en los resultados y la rentabilidad del negocio.</span>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services Section -->
+      <section id="servicios" class="py-20 bg-brand-bg/50 fade-in-section">
+        <div class="container mx-auto px-6">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-brand-text">“Conozca en video cómo nuestra estrategia de transformación digital se implementa en cada área clave del negocio.”</h2>
+            <p class="mt-4 text-lg text-brand-text-secondary max-w-2xl mx-auto">Descubra cómo abordamos la transformación digital de manera estructurada y transversal</p>
+            <div class="mt-4 w-24 h-1 bg-brand-primary mx-auto rounded-full"></div>
+          </div>
+          <div id="video-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-children">
+            <!-- Video cards will be injected here by JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Benefits Section -->
+      <section id="beneficios" class="py-20 bg-brand-bg-secondary fade-in-section">
+          <div class="container mx-auto px-6">
+              <div class="text-center mb-12">
+                  <h2 class="text-3xl md:text-4xl font-bold text-brand-text">Ventajas Estratégicas Claras</h2>
+                  <p class="mt-4 text-lg text-brand-text-secondary max-w-2xl mx-auto">Más allá de la tecnología, generamos un impacto tangible en las áreas críticas de su negocio.</p>
+                  <div class="mt-4 w-24 h-1 bg-brand-secondary mx-auto rounded-full"></div>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 stagger-children">
+                  <div class="benefit-card">
+                      <div class="benefit-icon">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.5l6.75-6.75m0 0l6.75 6.75m-6.75-6.75v12.75m11.25-3.75l-6.75 6.75m0 0l-6.75-6.75m6.75 6.75V3.75" />
+                          </svg>
+                      </div>
+                      <h3 class="text-xl font-semibold text-brand-text mb-2">Decisiones Basadas en Datos</h3>
+                      <p class="text-brand-text-secondary">Tome decisiones estratégicas más rápidas con información confiable y tableros ejecutivos en tiempo real.</p>
+                  </div>
+                   <div class="benefit-card">
+                       <div class="benefit-icon">
+                           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                               <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+                           </svg>
+                       </div>
+                      <h3 class="text-xl font-semibold text-brand-text mb-2">Eficiencia Operativa</h3>
+                      <p class="text-brand-text-secondary">Automatice procesos, elimine errores manuales y obtenga trazabilidad de extremo a extremo en sus operaciones.</p>
+                  </div>
+                   <div class="benefit-card">
+                       <div class="benefit-icon">
+                           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                               <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.286zm0 13.036h.008v.008h-.008v-.008z" />
+                           </svg>
+                       </div>
+                      <h3 class="text-xl font-semibold text-brand-text mb-2">Reducción de Riesgos</h3>
+                      <p class="text-brand-text-secondary">Anticipe desviaciones y fortalezca la seguridad con visibilidad temprana de riesgos y políticas claras de gobernanza.</p>
+                  </div>
+                   <div class="benefit-card">
+                       <div class="benefit-icon">
+                           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                               <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-3.75-2.25m3.75 2.25l-4.125 7.5" />
+                           </svg>
+                       </div>
+                      <h3 class="text-xl font-semibold text-brand-text mb-2">Crecimiento Escalable</h3>
+                      <p class="text-brand-text-secondary">Construya una base tecnológica y comercial que soporte su crecimiento futuro sin fricciones.</p>
+                  </div>
+              </div>
+          </div>
+      </section>
+
+      <!-- Impact Section -->
+      <section id="impacto" class="py-20 bg-brand-bg fade-in-section">
+          <div class="container mx-auto px-6">
+              <div class="text-center mb-12">
+                  <h2 class="text-3xl md:text-4xl font-bold text-brand-text">El Valor Medible de la Transformación Digital</h2>
+                  <p class="mt-4 text-lg text-brand-text-secondary max-w-2xl mx-auto">Más allá de la implementación, nos enfocamos en mover los indicadores que definen el éxito de su negocio.</p>
+                  <div class="mt-4 w-24 h-1 bg-brand-primary mx-auto rounded-full"></div>
+              </div>
+              <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center stagger-children">
+                  <div class="card">
+                      <p class="text-4xl lg:text-5xl font-extrabold text-brand-primary">OTIF</p>
+                      <p class="mt-2 text-brand-text-secondary">Aumento de la <strong>Lealtad del Cliente</strong> a través de una cadena de suministro que cumple sus promesas. Menos costos, más satisfacción.</p>
+                  </div>
+                  <div class="card">
+                      <p class="text-4xl lg:text-5xl font-extrabold text-brand-primary">CAC/LTV</p>
+                      <p class="mt-2 text-brand-text-secondary">Impulso al <strong>Crecimiento Rentable</strong>. Optimizamos su motor comercial para adquirir clientes de alto valor a un costo sostenible.</p>
+                  </div>
+                  <div class="card">
+                      <p class="text-4xl lg:text-5xl font-extrabold text-brand-primary">MTTR</p>
+                      <p class="mt-2 text-brand-text-secondary">Fortalecimiento de la <strong>Resiliencia Operativa</strong>. Minimizamos el impacto de las interrupciones, protegiendo sus ingresos y la confianza del cliente.</p>
+                  </div>
+              </div>
+          </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section id="contacto" class="py-20 bg-brand-bg fade-in-section">
+        <div class="container mx-auto px-6">
+          <div class="bg-gradient-to-r from-brand-primary to-brand-primary-darker rounded-lg p-8 md:p-12 text-center shadow-2">
+            <h2 class="text-3xl md:text-4xl font-bold text-white">¿Listo para dar el siguiente paso?</h2>
+            <p class="mt-4 text-lg text-white/90 max-w-2xl mx-auto">Hablemos de sus objetivos. Agende una sesión estratégica sin costo y descubra el potencial de una verdadera transformación digital.</p>
+            <div class="mt-8">
+              <a href="#" class="inline-block bg-white text-brand-primary font-bold py-4 px-10 rounded-md text-lg hover:opacity-90 transition-opacity duration-200 transform hover:scale-105 pulsing-cta" data-analytics="final-cta-click">
+                Agende una Sesión Estratégica
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Video Modal -->
+    <div id="video-modal" class="modal flex flex-col" role="dialog" aria-modal="true" aria-labelledby="video-modal-title">
+        <div class="flex-shrink-0 flex justify-between items-center p-4 border-b border-brand-border">
+            <h2 id="video-modal-title" class="text-lg font-semibold text-brand-text"></h2>
+            <button id="modal-close-button" class="p-1 rounded-full text-brand-text-secondary hover:bg-brand-border hover:text-brand-text transition-colors" aria-label="Cerrar modal">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+            </button>
+        </div>
+        <div class="flex-grow p-4 overflow-y-auto">
+            <div class="aspect-video">
+                <iframe id="video-iframe" src="" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="w-full h-full rounded-md"></iframe>
+            </div>
+            <div id="video-modal-description" class="mt-4 text-brand-text-secondary"></div>
+            <div id="ai-summary-container" class="mt-6">
+                <h4 class='font-bold text-brand-text mb-2'>Puntos Clave (Resumen con IA)</h4>
+                <div id="ai-summary-content" class="text-brand-text-secondary"></div>
+            </div>
+        </div>
+    </div>
+    <div id="modal-backdrop" class="modal-backdrop"></div>
+    
+    <script type="module">
+    import { GoogleGenAI, Type } from "@google/genai";
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // --- AI Initialization ---
+      let ai;
+      try {
+        ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+      } catch (error) {
+        console.error("API Key for Gemini is not configured. AI features will be disabled.", error);
+        ai = null;
+      }
+      
+      // --- Preloader Logic ---
+      const preloader = document.getElementById('preloader');
+      if (preloader) {
+        window.addEventListener('load', () => {
+          setTimeout(() => {
+            preloader.classList.add('hidden');
+          }, 500); // Small delay to ensure content is ready
+        });
+      }
+      
+      // --- DATA ---
+      const videos = [
+          {
+            id: 1,
+            url: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+            title: 'Optimización Administrativa y Financiera',
+            benefit: 'Convierta la incertidumbre financiera en control absoluto. Automatice cierres, optimice su flujo de efectivo y tome decisiones con total visibilidad.',
+            summary: '<ul><li>Cierres puntuales y auditables</li><li>Capital de trabajo bajo control</li><li>Menos reprocesos y errores</li><li>Trazabilidad de extremo a extremo</li></ul>',
+            imageId: 180,
+            description: `
+                <p class='mb-4 text-brand-text-secondary'>Este servicio está diseñado para darle control total sobre sus finanzas. Transformamos procesos manuales y propensos a errores en un sistema automatizado y transparente que le permite tomar decisiones estratégicas con confianza.</p>
+                <h4 class='font-bold text-brand-text mt-4 mb-2'>Su Transformación, en la Práctica:</h4>
+                <ul class='list-disc list-inside space-y-1'>
+                    <li><strong>Claridad Absoluta:</strong> Recibirá mapas de procesos que definen quién hace qué, eliminando ambigüedades.</li>
+                    <li><strong>Control Automatizado:</strong> Implementaremos flujos de aprobación automáticos y conciliaciones que minimizan el error humano.</li>
+                    <li><strong>Visibilidad Instantánea:</strong> Obtendrá tableros en tiempo real para monitorear la salud financiera de su empresa al momento.</li>
+                </ul>
+                <h4 class='font-bold text-brand-text mt-4 mb-2'>Resultados que Verá en sus Números:</h4>
+                <ul class='list-disc list-inside space-y-1'>
+                    <li><strong>Cierres más Rápidos:</strong> Reducimos drásticamente los días necesarios para el cierre mensual.</li>
+                    <li><strong>Flujo de Caja Optimizado:</strong> Mejoramos sus ciclos de cobro y pago (DSO/DPO).</li>
+                    <li><strong>Confianza en los Datos:</strong> Disminuimos a casi cero los errores en la información financiera.</li>
+                </ul>`
+          },
+          {
+            id: 2,
+            url: 'https://www.youtube.com/embed/u6NOTogsw84',
+            title: 'Logística Inteligente y Cadena de Suministro',
+            benefit: 'Transforme su logística de un centro de costos a una ventaja competitiva. Optimice inventarios, garantice entregas perfectas (OTIF) y obtenga visibilidad total.',
+            summary: '<ul><li>Menos quiebres y sobrestock</li><li>Menor costo por entrega</li><li>Mejor cumplimiento (OTIF)</li><li>Visibilidad total de la operación</li></ul>',
+            imageId: 1063,
+            description: `
+                <p class='mb-4 text-brand-text-secondary'>Deje de ver su logística como un costo y conviértala en su mayor ventaja competitiva. Le ayudamos a construir una cadena de suministro resiliente, eficiente y totalmente visible, asegurando que sus clientes recebam lo que quieren, cuando lo quieren.</p>
+                <h4 class='font-bold text-brand-text mt-4 mb-2'>Su Transformación, en la Práctica:</h4>
+                <ul class='list-disc list-inside space-y-1'>
+                    <li><strong>Almacén Eficiente:</strong> Rediseñamos la distribución de su almacén para agilizar la preparación de pedidos.</li>
+                    <li><strong>Control en su Bolsillo:</strong> Implementamos una aplicación de gestión logística (WMS) para una operación sin papeles y sin errores.</li>
+                    <li><strong>Decisiones Proactivas:</strong> Creamos tableros con alertas que le permiten anticipar problemas de inventario antes de que ocurran.</li>
+                </ul>
+                <h4 class='font-bold text-brand-text mt-4 mb-2'>Resultados que Verá en sus Entregas:</h4>
+                <ul class='list-disc list-inside space-y-1'>
+                    <li><strong>Clientes Satisfechos:</strong> Aumentamos su tasa de entregas perfectas (OTIF) de forma consistente.</li>
+                    <li><strong>Menos Ventas Perdidas:</strong> Mejoramos su 'fill rate' para que siempre tenga el producto que sus clientes buscan.</li>
+                    <li><strong>Entregas más Rápidas:</strong> Reducimos el tiempo total desde el pedido hasta la entrega (Lead Time).</li>
+                </ul>`
+          },
+          {
+            id: 3,
+            url: 'https://www.youtube.com/embed/3S-n_5a24aA',
+            title: 'Digitalización de Recursos Humanos',
+            benefit: 'Eleve su gestión de talento a un nivel estratégico. Digitalice el ciclo de vida del talento, alinee a su equipo con los objetivos de negocio y anticipe la rotación con datos.',
+            summary: '<ul><li>Ingresos más rápidos al rol (ramp-up)</li><li>Menos tareas repetitivas de RRHH</li><li>Objetivos individuales alineados al negocio</li><li>Visibilidad clara del clima laboral</li></ul>',
+            imageId: 367,
+            description: `
+                <p class='mb-4 text-brand-text-secondary'>Su equipo es su activo más valioso. Lo ayudamos a crear una experiencia de empleado moderna y eficiente, desde la contratación hasta el desarrollo, liberando a su equipo de RRHH de tareas manuales para que puedan enfocarse en lo que realmente importa: las personas.</p>
+                <h4 class='font-bold text-brand-text mt-4 mb-2'>Su Transformación, en la Práctica:</h4>
+                <ul class='list-disc list-inside space-y-1'>
+                    <li><strong>Roles Claros:</strong> Creamos un 'libro de puestos' que define expectativas y rutas de crecimiento para cada rol.</li>
+                    <li><strong>Onboarding Exitoso:</strong> Digitalizamos el proceso de bienvenida, haciendo que los nuevos talentos sean productivos desde el primer día.</li>
+                    <li><strong>Crecimiento Continuo:</strong> Implementamos un sistema de gestión del desempeño que alinea los objetivos individuales con la estrategia de la empresa.</li>
+                </ul>
+                <h4 class='font-bold text-brand-text mt-4 mb-2'>Resultados que Verá en su Equipo:</h4>
+                <ul class='list-disc list-inside space-y-1'>
+                    <li><strong>Talento Productivo, Más Rápidos:</strong> Disminuimos el tiempo de contratación y el 'ramp-up' de nuevos empleados.</li>
+                    <li><strong>Mayor Retención:</strong> Reducimos la rotación voluntaria al mejorar la experiencia y el desarrollo del empleado.</li>
+                    <li><strong>Cultura Positiva:</strong> Incrementamos el nivel de satisfacción y compromiso de su equipo (eNPS).</li>
+                </ul>`
+          },
+          {
+            id: 4,
+            url: 'https://www.youtube.com/embed/5y4b5e_i9s4',
+            title: 'Modernización de la Arquitectura Tecnológica',
+            benefit: 'Convierta su área de TI en un motor de innovación. Reduzca la fricción operativa con una arquitectura segura, procesos automatizados y datos 100% confiables para su estrategia de IA.',
+            summary: '<ul><li>Menos incidentes y recuperación más rápida</li><li>Procesos más seguros y automáticos</li><li>Onboarding de usuarios rápido y seguro</li><li>Datos confiables para IA</li></ul>',
+            imageId: 326,
+            description: `
+                <p class='mb-4 text-brand-text-secondary'>Una base tecnológica sólida es el cimiento del crecimiento futuro. Modernizamos su infraestructura para que sea más segura, escalable y eficiente, convirtiendo su área de TI en un verdadero habilitador de negocio y preparando sus datos para la era de la IA.</p>
+                <h4 class='font-bold text-brand-text mt-4 mb-2'>Su Transformación, en la Práctica:</h4>
+                <ul class='list-disc list-inside space-y-1'>
+                    <li><strong>Operación Resiliente:</strong> Entregamos manuales de operación (runbooks) que garantizan una respuesta rápida y estandarizada ante cualquier incidente.</li>
+                    <li><strong>Seguridad Proactiva:</strong> Implementamos las mejores prácticas de 'modern workplace' para proteger sus datos y asegurar el cumplimiento normativo.</li>
+                    <li><strong>Automatización Inteligente:</strong> Desarrollamos bots y flujos de trabajo que automatizan tareas repetitivas de alto impacto.</li>
+                    <li><strong>Datos para Decisiones:</strong> Construimos un modelo de datos confiable y tableros en Power BI que se convierten en la única fuente de verdad.</li>
+                </ul>
+                <h4 class='font-bold text-brand-text mt-4 mb-2'>Resultados que Verá en su Operación:</h4>
+                <ul class='list-disc list-inside space-y-1'>
+                    <li><strong>Menos Interrupciones:</strong> Reducimos drásticamente el tiempo de inactividad (MTTR).</li>
+                    <li><strong>Riesgo Controlado:</strong> Aumentamos el cumplimiento de políticas de seguridad, minimizando vulnerabilidades.</li>
+                    <li><strong>TI como Aliado:</strong> Mejoramos la percepción y satisfacción de los usuarios con el servicio del área de TI.</li>
+                </ul>`
+          },
+          {
+            id: 5,
+            url: 'https://www.youtube.com/embed/a3ICNMQW7Ok',
+            title: 'Estructura Comercial para Crecimiento Acelerado',
+            benefit: 'Instale una máquina de ventas predecible. Estructure su proceso comercial para acortar ciclos, aumentar la conversión y tomar decisiones de crecimiento con un forecast de alta precisión.',
+            summary: '<ul><li>Mayor conversión y ciclos más cortos</li><li>Mejor rentabilidad (CAC/LTV)</li><li>Forecast de ventas confiable</li><li>Equipo comercial alineado y repetible</li></ul>',
+            imageId: 160,
+            description: `
+                <p class='mb-4 text-brand-text-secondary'>Transforme sus ventas de un arte a una ciencia. Implementamos un sistema comercial predecible y escalable que le permita acortar ciclos de venta, mejorar la rentabilidad de cada cliente y tener un 'forecast' en el que realmente puede confiar.</p>
+                <h4 class='font-bold text-brand-text mt-4 mb-2'>Su Transformación, en la Práctica:</h4>
+                <ul class='list-disc list-inside space-y-1'>
+                    <li><strong>Proceso Estandarizado:</strong> Configuramos su CRM para reflejar un pipeline de ventas claro y efectivo que todo el equipo pueda seguir.</li>
+                    <li><strong>Foco en las Oportunidades Correctas:</strong> Implementamos un sistema de 'scoring' para que su equipo invierta tiempo en los leads con mayor potencial.</li>
+                    <li><strong>Equipo Imparable:</strong> Creamos una 'librería comercial' con los guiones, plantillas y casos de éxito que su equipo necesita para cerrar más tratos.</li>
+                </ul>
+                <h4 class='font-bold text-brand-text mt-4 mb-2'>Resultados que Verá en sus Ingresos:</h4>
+                <ul class='list-disc list-inside space-y-1'>
+                    <li><strong>Más Cierres, Menos Esfuerzo:</strong> Aumentamos la tasa de conversión en cada etapa del embudo de ventas.</li>
+                    <li><strong>Ventas más Rápidas:</strong> Acortamos el tiempo promedio que toma convertir un prospecto en cliente.</li>
+                    <li><strong>Crecimiento Rentable:</strong> Optimizamos la relación entre el costo de adquirir un cliente (CAC) y su valor a largo plazo (LTV).</li>
+                </ul>`
+          },
+          {
+            id: 6,
+            url: 'https://www.youtube.com/embed/xvM22C0i2S4',
+            title: 'Gobernanza de Datos para Estrategia de IA',
+            benefit: 'Convierta sus datos en su activo más valioso. Establezca una gobernanza sólida que garantice datos confiables, seguros y listos para potenciar su estrategia de Inteligencia Artificial.',
+            summary: '<ul><li>Decisiones basadas en datos confiables</li><li>Cumplimiento normativo asegurado</li><li>Activos de datos listos para IA</li><li>Reducción de riesgos de seguridad</li></ul>',
+            imageId: 49,
+            description: `
+                <p class='mb-4 text-brand-text-secondary'>En la era de la IA, la calidad de sus datos determina su éxito. Le ayudamos a construir una base de gobernanza de datos que no solo protege su información, sino que la convierte en un activo estratégico confiable y listo para ser explotado por modelos de inteligencia artificial.</p>
+                <h4 class='font-bold text-brand-text mt-4 mb-2'>Su Transformación, en la Práctica:</h4>
+                <ul class='list-disc list-inside space-y-1'>
+                    <li><strong>Fuente Única de Verdad:</strong> Creamos un catálogo de datos centralizado para que toda la organización hable el mismo idioma.</li>
+                    <li><strong>Políticas Claras:</strong> Definimos roles y responsabilidades sobre los datos (Data Stewardship) para asegurar su calidad y consistencia.</li>
+                    <li><strong>Seguridad y Cumplimiento:</strong> Implementamos controles para proteger sus datos y asegurar el cumplimiento de normativas como GDPR o CCPA.</li>
+                </ul>
+                <h4 class='font-bold text-brand-text mt-4 mb-2'>Resultados que Verá en su Estrategia:</h4>
+                <ul class='list-disc list-inside space-y-1'>
+                    <li><strong>Confianza en los Datos:</strong> Aumentamos el índice de calidad de datos (DQI) en toda la organización.</li>
+                    <li><strong>Decisiones Inteligentes:</strong> Reducimos el tiempo necesario para preparar datos para análisis y modelos de IA.</li>
+                    <li><strong>Riesgo Mitigado:</strong> Mejoramos el cumplimiento de las políticas de seguridad de datos.</li>
+                </ul>`
+          }
+      ];
+
+      // --- RENDER VIDEO GRID ---
+      const videoGrid = document.getElementById('video-grid');
+      if (videoGrid) {
+        videoGrid.innerHTML = videos.map(video => `
+          <div class="video-tile" data-video-id="${video.id}" tabindex="0" role="button" aria-haspopup="dialog">
+            <div class="video-tile-image-wrapper">
+              <img src="https://picsum.photos/id/${video.imageId}/600/400" alt="${video.title}" loading="lazy" class="aspect-video object-cover">
+              <div class="video-tile-overlay">
+                  <div class="play-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" /></svg>
+                  </div>
+              </div>
+            </div>
+            <div class="meta">
+              <h3 class="title text-brand-text">${video.title}</h3>
+              <p class="desc">${video.benefit}</p>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      // --- MODAL LOGIC ---
+      const modal = document.getElementById('video-modal');
+      const backdrop = document.getElementById('modal-backdrop');
+      const closeButton = document.getElementById('modal-close-button');
+      const videoIframe = document.getElementById('video-iframe');
+      const modalTitle = document.getElementById('video-modal-title');
+      const modalDescription = document.getElementById('video-modal-description');
+      const aiSummaryContainer = document.getElementById('ai-summary-content');
+      const aiSummaryWrapper = document.getElementById('ai-summary-container');
+
+      function openModal(video) {
+        if (!video || !modal) return;
+        modalTitle.textContent = video.title;
+        videoIframe.src = video.url;
+        modalDescription.innerHTML = video.description;
+        aiSummaryContainer.innerHTML = '<p class="text-brand-text-secondary animate-pulse">Generando resumen con IA...</p>';
+        aiSummaryWrapper.style.display = 'block';
+
+        modal.setAttribute('open', '');
+        document.body.style.overflow = 'hidden';
+
+        if (ai) {
+          generateAiSummary(video.description);
+        } else {
+          aiSummaryWrapper.style.display = 'none';
+        }
+      }
+
+      function closeModal() {
+        if (!modal) return;
+        modal.removeAttribute('open');
+        videoIframe.src = ''; 
+        document.body.style.overflow = '';
+      }
+      
+      async function generateAiSummary(content) {
+          if (!ai) return;
+          aiSummaryContainer.parentElement.classList.add('ai-content-loading');
+          try {
+              const prompt = `Resume los siguientes puntos clave de un servicio de consultoría en una lista de 3 a 4 viñetas concisas y orientadas a beneficios para un ejecutivo ocupado. Extrae los resultados más importantes y medibles. El texto es: ${content}`;
+              
+              const response = await ai.models.generateContent({
+                  model: 'gemini-2.5-flash',
+                  contents: prompt,
+              });
+
+              const text = response.text.trim();
+              const summaryPoints = text.split('\n').filter(line => line.trim().length > 0);
+              aiSummaryContainer.innerHTML = `<ul class="list-disc list-inside space-y-1">${summaryPoints.map(point => `<li>${point.replace(/^[\\*\\-]\\s*/, '')}</li>`).join('')}</ul>`;
+          } catch (error) {
+              console.error("Error generating AI summary:", error);
+              aiSummaryContainer.innerHTML = '<p class="text-red-500">No se pudo generar el resumen. Por favor, intente de nuevo más tarde.</p>';
+          } finally {
+              aiSummaryContainer.parentElement.classList.remove('ai-content-loading');
+          }
+      }
+
+      if (videoGrid) {
+        videoGrid.addEventListener('click', (e) => {
+          const tile = e.target.closest('.video-tile');
+          if (tile) {
+            const videoId = parseInt(tile.dataset.videoId, 10);
+            const video = videos.find(v => v.id === videoId);
+            openModal(video);
+          }
+        });
+        
+        videoGrid.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+              const tile = e.target.closest('.video-tile');
+              if (tile) {
+                  e.preventDefault();
+                  const videoId = parseInt(tile.dataset.videoId, 10);
+                  const video = videos.find(v => v.id === videoId);
+                  openModal(video);
+              }
+          }
+        });
+      }
+
+      if(closeButton) closeButton.addEventListener('click', closeModal);
+      if(backdrop) backdrop.addEventListener('click', closeModal);
+      
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal && modal.hasAttribute('open')) {
+          closeModal();
+        }
+      });
+      
+      // --- FADE-IN ANIMATIONS ON SCROLL ---
+      const fadeInSections = document.querySelectorAll('.fade-in-section');
+      const fadeInObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            fadeInObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      fadeInSections.forEach(section => {
+        fadeInObserver.observe(section);
+      });
+
+      // --- THEME TOGGLE LOGIC ---
+      const themeToggleBtn = document.getElementById('theme-toggle');
+      const darkIcon = document.getElementById('theme-toggle-dark-icon');
+      const lightIcon = document.getElementById('theme-toggle-light-icon');
+
+      function applyTheme(theme) {
+          if (theme === 'dark') {
+              document.documentElement.dataset.mode = 'dark';
+              if(darkIcon) darkIcon.classList.remove('hidden');
+              if(lightIcon) lightIcon.classList.add('hidden');
+          } else {
+              document.documentElement.dataset.mode = 'light';
+              if(darkIcon) darkIcon.classList.add('hidden');
+              if(lightIcon) lightIcon.classList.remove('hidden');
+          }
+      }
+
+      const currentTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      applyTheme(currentTheme);
+      
+      if(themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', function() {
+            const newTheme = document.documentElement.dataset.mode === 'dark' ? 'light' : 'dark';
+            localStorage.setItem('theme', newTheme);
+            applyTheme(newTheme);
+        });
+      }
+      
+      // --- NAVIGATION LOGIC (ACTIVE LINK & MOBILE MENU) ---
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const menuOpenIcon = document.getElementById('menu-open-icon');
+      const menuCloseIcon = document.getElementById('menu-close-icon');
+      const navLinks = document.querySelectorAll('.nav-link');
+      const sections = document.querySelectorAll('main section[id]');
+
+      // Mobile menu toggle
+      if (mobileMenuButton && mobileMenu) {
+          mobileMenuButton.addEventListener('click', () => {
+              const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+              mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+              mobileMenu.classList.toggle('hidden');
+              menuOpenIcon.classList.toggle('hidden');
+              menuCloseIcon.classList.toggle('hidden');
+          });
+      }
+      
+      // Handle navigation link clicks for smooth scrolling and mobile menu closing
+      navLinks.forEach(link => {
+          link.addEventListener('click', (e) => {
+              e.preventDefault(); // Prevent default anchor jump to have full control
+
+              const href = link.getAttribute('href');
+              if (!href || href === '#') return; // Ignore empty links
+              
+              const targetElement = document.querySelector(href);
+
+              if (targetElement) {
+                  const header = document.querySelector('header');
+                  const headerHeight = header ? header.offsetHeight : 70; // Fallback height
+                  const elementPosition = targetElement.getBoundingClientRect().top;
+                  const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+
+                  window.scrollTo({
+                      top: offsetPosition,
+                      behavior: 'smooth'
+                  });
+              }
+
+              // Close mobile menu if it's open
+              if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                  mobileMenuButton.setAttribute('aria-expanded', 'false');
+                  mobileMenu.classList.add('hidden');
+                  menuOpenIcon.classList.remove('hidden');
+                  menuCloseIcon.classList.add('hidden');
+              }
+          });
+      });
+
+      // Active link highlighting on scroll - New, more reliable implementation
+      const navHighlighter = () => {
+        // Find the height of the sticky header to correctly calculate the scroll position.
+        const header = document.querySelector('header');
+        // Provide a fallback height in case the header isn't found immediately.
+        const headerHeight = header ? header.offsetHeight : 70;
+        let currentSectionId = '';
+        
+        // Iterate over sections to find which one is currently in view.
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          // Check if the user has scrolled past the top of the section, considering the header height.
+          if (window.scrollY >= sectionTop - headerHeight - 20) { // A 20px buffer helps with accuracy.
+            currentSectionId = section.getAttribute('id');
+          }
+        });
+
+        // Update the navigation links.
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${currentSectionId}`) {
+            link.classList.add('active');
+          }
+        });
+      };
+
+      // Attach the highlighter function to the scroll event.
+      // { passive: true } improves scroll performance.
+      window.addEventListener('scroll', navHighlighter, { passive: true });
+      // Also run it once on page load to set the initial state correctly.
+      navHighlighter();
+
+    });
+    </script>
+    <footer class="bg-brand-bg-secondary border-t border-hairline mt-20">
+      <div class="container mx-auto px-6 py-8">
+        <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+          <p class="text-brand-text-secondary text-sm">&copy; 2024 InnovateNow Consulting. Todos los derechos reservados.</p>
+          <div class="flex mt-4 md:mt-0 space-x-6">
+            <a href="#" class="text-sm text-brand-text-secondary hover:text-brand-primary transition-colors">Política de Privacidad</a>
+            <a href="#" class="text-sm text-brand-text-secondary hover:text-brand-primary transition-colors">Términos de Servicio</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+</body>
+</html>
