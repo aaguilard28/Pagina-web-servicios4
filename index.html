@@ -532,7 +532,7 @@
             
             /* Animation for typing/erasing width + caret blinking */
             animation: 
-                typing-ltr 8s steps(72) infinite, 
+                typing-ltr 12s steps(72) infinite, 
                 blink-caret-ltr .75s step-end infinite;
         }
 
@@ -543,12 +543,20 @@
 
         /* Keyframes to animate the width from 0 to 100% and back (LTR) */
         @keyframes typing-ltr {
-            0%, 100% {
+            0% {
                 width: 0;
             }
-            50%, 75% {
-                /* Hold the full text for 25% of the duration */
+            42% {
                 width: 100%;
+            }
+            67% {
+                width: 100%;
+            }
+            84% {
+                width: 0;
+            }
+            100% {
+                width: 0;
             }
         }
 
