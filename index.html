@@ -438,7 +438,7 @@
         }
         #gx-ticker .gx-ticker__item{
           display: inline-flex; align-items: center; gap: 10px;
-          white-space: nowrap; font-weight: 300; font-size: 12px; opacity: .92;
+          white-space: nowrap; font-weight: 300; font-size: 13.5px; opacity: .92;
           color: #0A2540;
         }
         #gx-ticker .ico{ width: 18px; height: 18px; flex: 0 0 18px; color: #0A2540; }
@@ -456,10 +456,20 @@
         /* Responsive & Motion */
         @media (max-width:768px){
           #gx-ticker{ --gx-height: 40px; --gx-gap: 22px; --gx-speed: 34s; }
-          #gx-ticker .gx-ticker__item{ font-size: 11.5px; }
+          #gx-ticker .gx-ticker__item{ font-size: 12.5px; }
         }
-        @media (prefers-reduced-motion: reduce){
-          #gx-ticker .gx-ticker__track{ animation: none !important; }
+        
+        @media (prefers-reduced-motion: reduce) {
+          .fade-in-section,
+          .fade-in-section.is-visible > * {
+            opacity: 1;
+            transform: none;
+            transition: none;
+            animation: none;
+          }
+          #gx-ticker .gx-ticker__track {
+            animation: none !important;
+          }
         }
 
         /* Dark (opcional si tienes modo oscuro) */
@@ -532,7 +542,7 @@
             
             /* Animation for typing/erasing width + caret blinking */
             animation: 
-                typing-ltr 12s steps(72) infinite, 
+                typing-ltr 15s steps(72) infinite, 
                 blink-caret-ltr .75s step-end infinite;
         }
 
@@ -546,13 +556,13 @@
             0% {
                 width: 0;
             }
-            42% {
+            33% { /* Slower typing */
                 width: 100%;
             }
-            67% {
+            58% { /* Longer pause */
                 width: 100%;
             }
-            84% {
+            75% { /* Slower erasing */
                 width: 0;
             }
             100% {
@@ -613,6 +623,14 @@
             animation-duration: 1.2s;
         }
         
+        /* Specific animations for the new CTA section */
+        #contacto.stagger-children.is-visible > h2 {
+            animation-name: fadeInUp;
+        }
+        #contacto.stagger-children.is-visible > div {
+            animation-name: zoomInUp;
+        }
+
         /* AI Content Loader */
         .ai-content-loading {
             filter: blur(5px);
@@ -880,9 +898,11 @@
       <section id="servicios" class="py-20 bg-brand-bg/50 fade-in-section">
         <div class="container mx-auto px-6">
           <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold text-brand-text">“Conozca en video cómo nuestra estrategia de transformación digital se implementa en cada área clave del negocio.”</h2>
-            <p class="mt-4 text-lg text-brand-text-secondary max-w-2xl mx-auto">Descubra cómo abordamos la transformación digital de manera estructurada y transversal</p>
-            <div class="mt-4 w-24 h-1 bg-brand-primary mx-auto rounded-full"></div>
+            <h2 class="text-3xl md:text-4xl font-bold text-brand-text leading-tight">
+                Conozca en video nuestra estrategia de <span class="font-bold bg-clip-text text-transparent bg-gradient-to-r from-brand-primary to-brand-secondary">transformación digital.</span>
+            </h2>
+            <p class="mt-4 text-lg text-brand-text-secondary max-w-2xl mx-auto">Descubra cómo impulsamos la evolución corporativa de forma estructurada y transversal.</p>
+            <div class="mt-8 w-24 h-1 bg-brand-primary mx-auto rounded-full"></div>
           </div>
           <div id="video-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-children">
             <!-- Video cards will be injected here by JS -->
@@ -965,16 +985,15 @@
       </section>
 
       <!-- CTA Section -->
-      <section id="contacto" class="py-20 bg-brand-bg fade-in-section">
-        <div class="container mx-auto px-6">
-          <div class="bg-gradient-to-r from-brand-primary to-brand-primary-darker rounded-lg p-8 md:p-12 text-center shadow-2">
-            <h2 class="text-3xl md:text-4xl font-bold text-white">¿Listo para dar el siguiente paso?</h2>
-            <p class="mt-4 text-lg text-white/90 max-w-2xl mx-auto">Hablemos de sus objetivos. Agende una sesión estratégica sin costo y descubra el potencial de una verdadera transformación digital.</p>
-            <div class="mt-8">
-              <a href="#" class="inline-block bg-white text-brand-primary font-bold py-4 px-10 rounded-md text-lg hover:opacity-90 transition-opacity duration-200 transform hover:scale-105 pulsing-cta" data-analytics="final-cta-click">
-                Agende una Sesión Estratégica
-              </a>
-            </div>
+      <section id="contacto" class="py-20 bg-gradient-to-r from-brand-primary to-brand-primary-darker fade-in-section stagger-children">
+        <div class="container mx-auto px-6 text-center">
+          <h2 class="text-3xl md:text-4xl font-bold text-white mb-8">
+            El verdadero riesgo es no evolucionar.
+          </h2>
+          <div class="bg-brand-bg-secondary rounded-2xl shadow-lg py-10 px-6 max-w-4xl mx-auto">
+            <p class="text-lg sm:text-xl text-gray-800 dark:text-gray-200 max-w-[65ch] mx-auto">
+              La transformación digital no es solo adoptar tecnología: es <strong class="font-semibold text-brand-text dark:text-brand-text">gobernar el cambio</strong>, <strong class="font-semibold text-brand-text dark:text-brand-text">elevar la visión</strong> y <strong class="font-semibold text-brand-text dark:text-brand-text">trascender como referente</strong> en tu sector.
+            </p>
           </div>
         </div>
       </section>
